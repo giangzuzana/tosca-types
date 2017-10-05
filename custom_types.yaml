@@ -1299,10 +1299,10 @@ node_types:
       marathon_password:
         type: string
         required: yes
-      onedatatoken:
+      oneclient_token:
         type: string
         required: no
-      onedatacache:
+      oneprovider_name:
         type: string
         required: no
     artifacts:
@@ -1323,8 +1323,8 @@ node_types:
             cms_config_squid_image: { get_property: [ SELF, cms_squid_image ] }
             cms_config_wn_image: { get_property: [ SELF, cms_wn_image ] }
             cms_config_proxycache_image: { get_property: [ SELF, cms_proxycache_image ]}
-            cms_config_onedatacache: { get_property: [ SELF, onedatacache ] }
-            cms_config_onedatatoken: { get_property: [ SELF, onedatatoken ] }
+            oneprovider_name: { get_property: [ SELF, oneprovider_name ] }
+            oneclient_token: { get_property: [ SELF, oneclient_token ] }
             marathon_user: { get_property: [ SELF, marathon_username ] }
             marathon_pass: { get_property: [ SELF, marathon_password ] }
     requirements:
@@ -1408,6 +1408,12 @@ node_types:
       cms_input_protocol:
         type: string
         required: yes
+      oneclient_token:
+        type: string
+        required: no
+      oneprovider_name:
+        type: string
+        required: no
       mysquid_host:
         type: string
         required: yes
@@ -1441,6 +1447,8 @@ node_types:
             cms_input_path: { get_property: [ SELF, cms_input_path ] }
             cms_input_protocol: { get_property: [ SELF, cms_input_protocol ] }
             cms_config_elastic_secret: { get_property: [ SELF, elasticsearch_secret ] }
+            oneprovider_name: { get_property: [ SELF, oneprovider_name ] }
+            oneclient_token: { get_property: [ SELF, oneclient_token ] }
             monitordb_ip: { get_property: [ SELF, monitordb_ip ] }
     requirements:
       - host:
@@ -1813,4 +1821,3 @@ node_types:
         required: no
         type: string
         description: Specify the VO of the user
-
